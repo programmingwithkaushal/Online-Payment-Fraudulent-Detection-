@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Payment Fraud Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Online Payment Fraud Detection</h1>
+        <form action="/" method="post">
+            <div class="input-group">
+                <label for="transaction-type">Transaction Type</label>
+                <select id="transaction-type" name="transaction_type">
+                    <option value="Cash_Out">CASH OUT</option>
+                    <option value="Payment">PAYMENT</option>
+                    <option value="CASH_IN">CASH IN </option>
+                    <option value="Transfer">TRANSFER</option>
+                    <option value="Debit">DEBIT</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="amount">Transaction Amount</label>
+                <input type="number" id="amount" name="amount" placeholder="Enter amount" required>
+            </div>
+            <div class="input-group">
+                <label for="old-balance-org">Old Balance Org</label>
+                <input type="number" id="old-balance-org" name="old_balance_org" placeholder="Enter old balance org" required>
+            </div>
+            <div class="input-group">
+                <label for="new-balance-orig">New Balance Orig</label>
+                <input type="number" id="new-balance-orig" name="new_balance_orig" placeholder="Enter new balance orig" required>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

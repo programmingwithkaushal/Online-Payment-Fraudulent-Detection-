@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Detection Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #141414;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            color: #e50914;
+        }
+
+        .result-box {
+            padding: 20px;
+            background-color: #2c2c2c;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .result-box p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .result-box span.fraud {
+            color: #e50914;
+            font-weight: bold;
+        }
+
+        .result-box span.legitimate {
+            color: #00c853;
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #e50914;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #b00710;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .result-box p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <div class="result-box">
+            <p><strong>Transaction Type:</strong> {{ transaction_type }}</p>
+            <p><strong>Transaction Amount:</strong> {{ amount }}</p>
+            <p><strong>Old Balance Org:</strong> {{ old_balance_org }}</p>
+            <p><strong>New Balance Orig:</strong> {{ new_balance_orig }}</p>
+            <p><strong>Prediction:</strong> <span class="{{ 'fraud' if prediction == 'Fraudulent' else 'legitimate' }}">{{ prediction }}</span></p>
+        </div>
+        <a href="/" class="btn">Back to Home</a>
+    </div>
+</body>
+</html>
